@@ -1,0 +1,24 @@
+{
+  "name": "cs50_finalproject",
+  "version": "1.0.0",
+  "description": "- retrieve search box data - function to return dict of show_episode: show_rating - connect data to chart-setup.js",
+  "main": "chart-setup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fiyxxx/cs50_finalproject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Fiyxxx/cs50_finalproject/issues"
+  },
+  "homepage": "https://github.com/Fiyxxx/cs50_finalproject#readme",
+  "dependencies": {
+    "chart.js": "^4.5.0"
+  }
+}

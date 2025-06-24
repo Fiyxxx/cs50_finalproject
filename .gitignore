@@ -1,0 +1,23 @@
+# Python virtual environment
+venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Environment/config files (optional)
+.env
+
+# Node modules
+node_modules/
+
+# Editor settings (optional)
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs (optional)
+*.log
