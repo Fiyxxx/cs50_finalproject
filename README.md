@@ -1,11 +1,16 @@
-## Game Plan
-#### app.py
-- retrieve search box data
-- function to return dict of show_episode: show_rating
-- connect data to chart-setup.js
-
-#### index.html
-- create search box with variable to pass to app.py
-
-#### chart-setup.js
-- retrieve data from app.py
+# ChartRatings
+#### Video Demo:  <URL HERE>
+#### Description:
+###### For my CS50 final project, I have chosen to build ChartRatings, a website that visualises IMDB user ratings of shows that users search for. I will split the project's explanations into different parts for clarity: Data API, Flask, ChartJS, and final thoughts.
+#### Data API: 
+##### My project for this course is, in certain ways, an extension of my Python project for CS50P. In that project, I practised building and working with API calls and became a lot more familiar and comfortable with it. With that experience, I was able to utilise the extensive TMDB API to get the data I need for my TV Show ratings chart. I learnt to use headers and parameters, and also to read the API documentation extensively in order to understand the JSON output of my API calls, and use code to retrieve only the information that I need. 
+##### In app.py, I first get the user's input from the form, pass it into my API call function, where the show name is a query, and build multiple functions, each going down the hierarchy from getting show name, to season details, to eventually the episode details. I also learnt the importance of hiding API keys. While the APi key for TMDB was free, and malicious parties getting my key would not cause damage to me, the same cannot be said for paid API calls, like for example using a service by OpenAI. The best thing to do is store the key itself in a env file and import it in the code where it is used, and the env file itself will not be pushed to github when entered in .gitignore so that no one can view it (since it is only stored locally).
+#### Flask:
+##### For my flask (app.py) portion, I learnt to build a dynamic web app that would connect the backend API call to a more aesthetic front end for user experience. My back end with flask uses the same idea to retrieve show data. Flask served as the core framework to handle routing, process form submissions, and deliver data to the frontend in real time. 
+##### I set up a basic route that responds to both GET and POST requests. When a user visits the page normally, the index is rendered without chart data. But after the user submits the form, the show name entered is captured using request.form.get("show_name"). This input is passed into a custom function, get_chart_data(show_name), which finds the show ID, then retrieves the number of seasons, and finally looping through each season to collect individual episode details like episode name, number, and rating. I structured this logic using helper functions, which abstract away specific API calls to make code function and readability a lot more clear. I also used Render to easily host my Flask web server online, where it is accessible through a URL.
+#### ChartJS:
+##### ChartJS is one of the most extensive JavaScript frameworks for charting, it had very clear documentation and was relatively easy to get started. Of course, this was my first time working with Chart.js, so there was a bit of a learning curve. I explored basic tutorials online, as well as the documentation to getting started, and learnt how to configure chart types, labels, datasets, and options like responsiveness and scaling. I decided to use a line chart to reflect how episode ratings change over time.
+##### Initially, I placed all my chart logic in a separate JavaScript file (chart-setup.js) within the static/ directory. However, I encountered the problem of static files not being able to directly access Flask’s Jinja2 variables, which meant that passing dynamic Python data into the external JavaScript required more complex setup.
+##### To resolve this, I moved the entire chart logic into an inline block within the HTML template, allowing me to use Jinja directly in JavaScript. I learned to convert Python lists to valid JavaScript arrays using Flask’s tojson filter. I also wrapped the entire script in a conditionalblock so that the chart logic only executes when data is available. This fixed the initial load issue and made the app more robust.
+#### Final Thoughts:
+##### I learnt a lot about the power of JavaScript frameworks in this project, and also that there are numerous ways to tackle the same problem, some solutions being more elegant than others. This project also serves as a reminder of how much I have yet to learn, and that the technical ceiling of code is sky high. 

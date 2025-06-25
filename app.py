@@ -1,3 +1,11 @@
+"""
+title: ChartRatings
+name: Han Sheng
+github/edx: Fiyxxx/Fiyxx
+country: singapore
+date: 25/6/2025
+"""
+
 from flask import Flask, render_template, request
 import requests
 from env import tmdb_api_key
