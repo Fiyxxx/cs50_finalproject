@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests
+from env import tmdb_api_key
 
 app = Flask(__name__)
 
@@ -16,7 +17,7 @@ def index():
     return render_template("index.html")
 
 # getting data from the api
-apikey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNDQ4YjdiYTAxODE3MDZmMjUzOTM4MmU4MWIwMDI4MyIsIm5iZiI6MTc0OTcxMTgyOC45NTEsInN1YiI6IjY4NGE3YmQ0MjkzZTk0Njc5NDlmNWRkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.49hBLiPFw1WWg5-4glrqAvMYHeOqexHFZt2Vk8A3YXk"
+apikey = tmdb_api_key
 headers = {
     "Authorization": f"Bearer {apikey}",
 }
