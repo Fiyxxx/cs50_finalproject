@@ -1,7 +1,7 @@
 """
 title: ChartRatings
 name: Han Sheng
-github/edx: Fiyxxx/Fiyxx
+github/edx: Fiyxxx/ezfyee
 country: singapore
 date: 25/6/2025
 """
