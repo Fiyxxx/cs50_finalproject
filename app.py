@@ -32,13 +32,14 @@ def get_chart_data(show_name):
     no_seasons = get_no_seasons(show_id)
     episode_list = []
     for season in no_seasons:
-        episodes = get_episodes(show_id, season)
-        for episode in episodes:
-            episode_name = episode["name"]
-            episode_number = episode["episode_number"]
-            rating = episode["vote_average"]
-            episode = Episode(episode_name, f"{season}x{episode_number}", rating) # format: "1x1"
-            episode_list.append(episode)
+        if season != 0:
+            episodes = get_episodes(show_id, season)
+            for episode in episodes:
+                episode_name = episode["name"]
+                episode_number = episode["episode_number"]
+                rating = episode["vote_average"]
+                episode = Episode(episode_name, f"{season}x{episode_number}", rating) # format: "1x1"
+                episode_list.append(episode)
     return episode_list
 
 def get_show_id(name):
@@ -65,8 +66,12 @@ def get_episodes(id, season_number):
     newdata = rawdata.json()
     episode_list = []
     for episode in newdata["episodes"]:
-        episode_list.append(episode["episode_number"])
-    return episode_list
+        episode_list.append({
+            "name": episode["name"],
+            "episode_number": episode["episode_number"],
+            "vote_average": episode["vote_average"]
+        })
+    return episode_list #only gives list of episode numbers, not the episode name
 
 if __name__ == "__main__":
     app.run(debug=True)

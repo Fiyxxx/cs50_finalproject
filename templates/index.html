@@ -17,7 +17,7 @@
             <input type="text" name="show_name" placeholder="Enter show name">
             <button type="submit">Search</button>
         </form>
-        <div style="width: 80%; margin: 20px auto;">
+        <div>
             <canvas id="myChart"></canvas>
         </div>
     </main>
@@ -27,6 +27,41 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="chart-setup.js"></script>
+    {% if episode_number_list and rating_list and name_list %}
+    <script>
+        const episodes = {{ episode_number_list | tojson }};
+        const ratings = {{ rating_list | tojson }};
+        const names = {{ name_list | tojson }};
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: episodes,
+                datasets: [{
+                    label: "Rating",
+                    data: ratings,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const index = tooltipItems[0].dataIndex;
+                                return names[index];
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    {% endif %}
+    <!--<script src="{{ url_for('static', filename='chart-setup.js') }}"></script>-->
 </body>
 </html>
