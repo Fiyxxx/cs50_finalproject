@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: chart-ratings
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn app:app
