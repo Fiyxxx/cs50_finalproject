@@ -1,4 +1,5 @@
 # ChartRatings
+#### URL: https://cs50-finalproject.onrender.com
 #### Video Demo: https://youtu.be/sqf6yZzgwkI
 #### Description:
 ###### For my CS50 final project, I have chosen to build ChartRatings, a website that visualises IMDB user ratings of shows that users search for. I will split the project's explanations into different parts for clarity: Data API, Flask, ChartJS, and final thoughts.
