@@ -22,4 +22,4 @@ Thumbs.db
 # Logs (optional)
 *.log
 
-.env
+env.py
